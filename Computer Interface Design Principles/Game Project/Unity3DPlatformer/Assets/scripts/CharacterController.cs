@@ -10,6 +10,7 @@ public class CharacterController : MonoBehaviour {
     public float inputDelay = 0.1f;
     public float forwardVel = 12;
     public float rotateVel = 100;
+    
 
     Quaternion targetRotation;
     Rigidbody rBody;
@@ -29,6 +30,7 @@ public class CharacterController : MonoBehaviour {
 
     void Start()
     {
+        
         anim = GetComponent<Animator>();
         targetRotation = transform.rotation;
         if (GetComponent<Rigidbody>())
@@ -38,6 +40,8 @@ public class CharacterController : MonoBehaviour {
 
         forwardInput = turnInput = 0;
     }
+
+    
 
     void GetInput()
     {
@@ -95,20 +99,26 @@ public class CharacterController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        Run();
+        
+            Run();
+        
     }
 
     void Run()
     {
-        if (Mathf.Abs(forwardInput) > inputDelay)
-        {
-            //move
-            rBody.velocity = transform.forward * forwardInput * forwardVel;
-        }
-        else
-            //zero velocity
-            rBody.velocity = Vector3.zero;
+       
+            if (Mathf.Abs(forwardInput) > inputDelay)
+            {
+                //move
+                rBody.velocity = transform.forward * forwardInput * forwardVel;
+            }
+            else
+                //zero velocity
+                rBody.velocity = Vector3.zero;
+
+        
     }
+    
 
     void Turn()
     {
