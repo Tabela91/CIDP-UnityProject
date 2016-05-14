@@ -10,8 +10,8 @@ public class HealthBar : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //for testing health, repeats ReduceHealth method
-        //InvokeRepeating("ReduceHealth", 1, 1);
+        //Uncomment below for testing health depletion and death animation trigger
+       //InvokeRepeating("ReduceHealth", 1, 1);
     }
 
     //method for Health Bar
