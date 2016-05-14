@@ -11,7 +11,7 @@ public class HealthBar : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //for testing health, repeats ReduceHealth method
-        InvokeRepeating("ReduceHealth", 1, 1);
+        //InvokeRepeating("ReduceHealth", 1, 1);
     }
 
     //method for Health Bar

@@ -10,6 +10,7 @@ public class CharacterController : MonoBehaviour {
     public float inputDelay = 0.1f;
     public float forwardVel = 12;
     public float rotateVel = 100;
+    public VirtualJoystick joystick;
     
 
     Quaternion targetRotation;
@@ -21,13 +22,7 @@ public class CharacterController : MonoBehaviour {
         get { return targetRotation; }
     }
     
-    /*
-    void Start()
-    {
-       anim = GetComponent<Animator>();
-    }
-    */
-
+   
     void Start()
     {
         
@@ -45,8 +40,9 @@ public class CharacterController : MonoBehaviour {
 
     void GetInput()
     {
-        forwardInput = Input.GetAxis("Vertical");
-        turnInput = Input.GetAxis("Horizontal");
+
+        forwardInput = joystick.Vertical(); //Input.GetAxis("Vertical");
+        turnInput = joystick.Horizontal();//Input.GetAxis("Horizontal");
     }
 
     void Update()
@@ -54,8 +50,8 @@ public class CharacterController : MonoBehaviour {
         GetInput();
         Turn();
         //------------------------------
-        //controls idle jump
-        float translation = Input.GetAxis("Vertical") * speed;
+        //controls idle jump - Input.GetAxis is used only for dedicated keyboard input
+        float translation = /*Input.GetAxis("Vertical")*/ joystick.Vertical()* speed;
         
         translation *= Time.deltaTime;
         
@@ -73,7 +69,7 @@ public class CharacterController : MonoBehaviour {
             anim.SetBool("isJumping", false);
         }
 
-        //controls movement
+        //controls running animation movement
         if (translation != 0)
         {
             anim.SetBool("isRunning", true);
