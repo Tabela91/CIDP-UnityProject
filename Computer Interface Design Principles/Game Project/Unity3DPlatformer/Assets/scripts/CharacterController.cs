@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class CharacterController : MonoBehaviour {
@@ -50,13 +51,23 @@ public class CharacterController : MonoBehaviour {
         GetInput();
         Turn();
         //------------------------------
+        Movement();
+
+    }
+
+   
+    
+    
+
+    void Movement()
+    {
         //controls idle jump - Input.GetAxis is used only for dedicated keyboard input
-        float translation = /*Input.GetAxis("Vertical")*/ joystick.Vertical()* speed;
-        
+        float translation = /*Input.GetAxis("Vertical")*/ joystick.Vertical() * speed;
+
         translation *= Time.deltaTime;
-        
+
         transform.Translate(0, 0, translation);
-        
+
 
         //controls idle jump
         if (Input.GetButtonDown("Jump"))
@@ -89,9 +100,7 @@ public class CharacterController : MonoBehaviour {
         {
             anim.SetBool("isRunJumping", false);
         }
-
     }
-
 
     void FixedUpdate()
     {
@@ -99,6 +108,18 @@ public class CharacterController : MonoBehaviour {
             Run();
         
     }
+
+    void OnGUI()
+    {
+        //not working as intended, by using triggers the animations can happen at odd times, preferably Set Bool instead but is not working
+        if (GUI.Button(new Rect(Screen.width * 0.7f, Screen.height * 0.8f, Screen.width * 0.3F, Screen.height / 8.1f), "Jump"))
+        {
+            anim.SetTrigger("isJump");
+            anim.SetTrigger("isRunJump");
+        }
+
+    }
+
 
     void Run()
     {
