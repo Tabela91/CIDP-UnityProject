@@ -55,9 +55,25 @@ public class CharacterController : MonoBehaviour {
 
     }
 
-   
-    
-    
+  
+
+    public void Jump()
+    {
+        float translation = joystick.Vertical() * speed;
+        translation *= Time.deltaTime;
+
+        transform.Translate(0, 0, translation);
+
+        if (translation != 0)
+        {
+            this.gameObject.GetComponent<Animator>().SetTrigger("isRunJump");
+        }
+
+        if (translation == 0)
+        {
+            this.gameObject.GetComponent<Animator>().SetTrigger("isJump");
+        }
+    }
 
     void Movement()
     {
@@ -108,18 +124,6 @@ public class CharacterController : MonoBehaviour {
             Run();
         
     }
-
-    void OnGUI()
-    {
-        //not working as intended, by using triggers the animations can happen at odd times, preferably Set Bool instead but is not working
-        if (GUI.Button(new Rect(Screen.width * 0.7f, Screen.height * 0.8f, Screen.width * 0.3F, Screen.height / 8.1f), "Jump"))
-        {
-            anim.SetTrigger("isJump");
-            anim.SetTrigger("isRunJump");
-        }
-
-    }
-
 
     void Run()
     {
