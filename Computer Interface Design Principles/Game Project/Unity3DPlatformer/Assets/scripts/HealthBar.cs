@@ -23,7 +23,7 @@ public class HealthBar : MonoBehaviour {
         if (health <= 0)
         {
             //disables CharacterController script so the player can no longer move on deat
-                player.GetComponent<CharacterController>().enabled = false;
+                player.GetComponent<Movement>().enabled = false;
             //Sets isDead trigger to initiate death animation
                 player.GetComponent<Animator>().SetTrigger("isDead");
         }

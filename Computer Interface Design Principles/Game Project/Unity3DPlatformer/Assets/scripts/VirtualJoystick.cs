@@ -18,15 +18,24 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
     public virtual void OnDrag(PointerEventData ped)
     {
         Vector2 pos;
-        if(RectTransformUtility.ScreenPointToLocalPointInRectangle(bgImg.rectTransform, ped.position, ped.pressEventCamera, out pos))
+        if(RectTransformUtility.ScreenPointToLocalPointInRectangle(bgImg.rectTransform
+                                                                    , ped.position
+                                                                    , ped.pressEventCamera
+                                                                    , out pos))
         {
+            //get coordinates of where you touch/click point
             pos.x = (pos.x / bgImg.rectTransform.sizeDelta.x);
             pos.y = (pos.y / bgImg.rectTransform.sizeDelta.y);
 
+
+            // the following will ensure that the coordinates on the 
+            //joystick are -1X to 1X and -1Y to 1Y
             inputVector = new Vector3(pos.x  , 0, pos.y);
-            inputVector = (inputVector.magnitude > 1) ? inputVector.normalized : inputVector;
+            inputVector = (inputVector.magnitude > 1.0f) ?inputVector.normalized : inputVector;
 
             //Move Joystick IMG
+                                                                                            //these modifiers determine how far
+                                                                                            //from the centre the joystick knob will 
             joystickImg.rectTransform.anchoredPosition = new Vector3(inputVector.x * (bgImg.rectTransform.sizeDelta.x / 3)
                                                                     , inputVector.z * (bgImg.rectTransform.sizeDelta.y / 3));
 
