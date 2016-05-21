@@ -28,8 +28,11 @@ ModelImporter:
     400018: transform2
     400020: transform3
     2300000: pPlane1
+    2300002: //RootNode
     3300000: pPlane1
+    3300002: //RootNode
     4300000: pPlane1
+    6400000: //RootNode
     7400000: Take 001
     9500000: //RootNode
   materials:
@@ -58,7 +61,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -73,8 +76,8 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 180
-    normalImportMode: 1
-    tangentImportMode: 3
+    normalImportMode: 0
+    tangentImportMode: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
