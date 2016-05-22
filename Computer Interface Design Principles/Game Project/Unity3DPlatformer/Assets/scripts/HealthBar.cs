@@ -11,13 +11,13 @@ public class HealthBar : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //Uncomment below for testing health depletion and death animation trigger
-       //InvokeRepeating("ReduceHealth", 1, 1);
+       InvokeRepeating("ReduceHealth", 1, 1);
     }
 
     //method for Health Bar
     void ReduceHealth()
     {
-        health = health - 20;//health reduced by this value whenever method is invoked
+        health = health - 1;//health reduced by this value whenever method is invoked
         healthBar.value = health; //Reflects the current health value in the health bar slider
         //controls death state
         if (health <= 0)
