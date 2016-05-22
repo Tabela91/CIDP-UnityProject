@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scenes/ScenePlastic.unity
+- path: Assets/scenes/TitleMenu.unity
   isLoaded: 1
   isActive: 1
