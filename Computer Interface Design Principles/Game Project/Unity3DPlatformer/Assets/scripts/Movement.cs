@@ -19,12 +19,18 @@ public class Movement : MonoBehaviour {
     void Awake()
     {
         anim = GetComponent<Animator>();
-        forwardInput = turnInput = 0;
     }
 
-   
+    void GetInput()
+    {
 
-    void Update()
+        forwardInput = joystick.Vertical();
+        turnInput = joystick.Horizontal();
+    }
+
+
+
+        void Update()
     {
         
         Jump();
@@ -34,10 +40,13 @@ public class Movement : MonoBehaviour {
     }
 
     void Turning()
-    { 
+    {
         //controls strafing left or right with Q or E keys
-        anim.SetFloat("Turn", Input.GetAxis("MoveX")); 
-        //anim.SetFloat("Turn", joystick.Horizontal()); for Joystick input
+        anim.SetFloat("MoveX", Input.GetAxis("MoveX")); 
+        //controls turning input with A and D keys or arrow keys
+        anim.SetFloat("Turn", joystick.Horizontal());
+        //for Joystick input
+       // anim.SetFloat("Turn", joystick.Horizontal());
     }
 
     void Walking()
@@ -51,37 +60,39 @@ public class Movement : MonoBehaviour {
 
     void Move()
     {
+        //IF SHIFT KEY IS HELD DOWN THEREFORE WALK IS TRIGGERED
+
         if(anim.GetBool("Walk"))
         {   //remember that input.getAxis("Horizontal") etc have been renamed to MoveZ/X
             //Change Input.GetAxis("MoveZ") to joystick.Vertical() for Joystick Input
             //Change Input.GetAxis("MoveX") to joystick.Horizontal() for Joystick Input
-            anim.SetFloat("MoveZ", Mathf.Clamp(Input.GetAxis("MoveZ"), -WALK_SPEED, WALK_SPEED));
+            anim.SetFloat("MoveZ", Mathf.Clamp(joystick.Vertical(), -WALK_SPEED, WALK_SPEED));
             anim.SetFloat("MoveX", Mathf.Clamp(Input.GetAxis("MoveX"), -WALK_SPEED, WALK_SPEED));
+          // anim.SetFloat("MoveZ", Mathf.Clamp(joystick.Vertical(), -WALK_SPEED, WALK_SPEED));
+           // anim.SetFloat("MoveX", Mathf.Clamp(joystick.Horizontal(), -WALK_SPEED, WALK_SPEED));
 
         }
         
         
 
         else
-        {  // For Keyboard Movement
-            anim.SetFloat("MoveZ", Input.GetAxis("MoveZ"));
-            anim.SetFloat("MoveX", Input.GetAxis("MoveX"));
-          
-            
-
-            /*For Joystick Input
+        {  
+           //Joystick Vertical function checks for joystick position. if value is 0 then it will get the MoveZ values from the W/S and Forward/Backward buttons
             anim.SetFloat("MoveZ", joystick.Vertical());
-            anim.SetFloat("MoveX", joystick.Horizontal());
-    */
+            // anim.SetFloat("MoveZ", Input.GetAxis("MoveZ"));
+            // anim.SetFloat("MoveX", joystick.Horizontal());
+
         }
     }
 
+    //controls jump for keyboard input
     public void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space))
             anim.SetTrigger("Jump");
 
     }
+
 
     //Button Jump Trigger. Needed to be separate function to work successfully 
     public void ClickJump()

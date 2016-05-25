@@ -17,7 +17,7 @@ public class HealthBar : MonoBehaviour {
         
         health = 100;
         //Uncomment below for testing health depletion and death animation trigger
-        InvokeRepeating("ReduceHealth", 1, 1);
+        //InvokeRepeating("ReduceHealth", 1, 1);
         //places retrymenu panel in retryMenu game object. Disables it so that the menu does not appear at game start
         retryMenu = GameObject.Find("DeathMenu");
         retryMenu.SetActive(false);

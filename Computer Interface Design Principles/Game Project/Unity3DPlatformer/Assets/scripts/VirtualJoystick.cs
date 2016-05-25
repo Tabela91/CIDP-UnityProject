@@ -30,30 +30,39 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 
             // the following will ensure that the coordinates on the 
             //joystick are -1X to 1X and -1Y to 1Y
-            inputVector = new Vector3(pos.x  , 0, pos.y);
+            inputVector = new Vector3(pos.x*2 + 1  , 0, pos.y*2 -1);
             inputVector = (inputVector.magnitude > 1.0f) ?inputVector.normalized : inputVector;
 
             //Move Joystick IMG
                                                                                             //these modifiers determine how far
                                                                                             //from the centre the joystick knob will 
-            joystickImg.rectTransform.anchoredPosition = new Vector3(inputVector.x * (bgImg.rectTransform.sizeDelta.x / 3)
-                                                                    , inputVector.z * (bgImg.rectTransform.sizeDelta.y / 3));
+            joystickImg.rectTransform.anchoredPosition = new Vector3(inputVector.x * (bgImg.rectTransform.sizeDelta.x / 4)
+                                                                    , inputVector.z * (bgImg.rectTransform.sizeDelta.y / 4));
 
             Debug.Log(inputVector);
         }
     }
-
+    //When left mouse button is held down, run OnDrag Method
     public virtual void OnPointerDown(PointerEventData ped)
     {
         OnDrag(ped);
     }
-
+    //Resets joystick position after pointer is let go
     public virtual void OnPointerUp(PointerEventData ped)
     {
         inputVector = Vector3.zero;
         joystickImg.rectTransform.anchoredPosition = Vector3.zero;
     }
-
+    //assign forward movement value
+    //Current Issue: inputVector X and Z are remaining zero even when joystick is moved
+    public float Vertical()
+    {
+        if (inputVector.z != 0)
+            return inputVector.z;
+        else
+            return Input.GetAxis("MoveZ");
+    }
+    //assign left/right movement value
     public float Horizontal()
     {
         if (inputVector.x != 0)
@@ -62,12 +71,6 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
             return Input.GetAxis("Horizontal");
     }
 
-    public float Vertical()
-    {
-        if (inputVector.z != 0)
-            return inputVector.z;
-        else
-            return Input.GetAxis("Vertical");
-    }
+   
    
 }
