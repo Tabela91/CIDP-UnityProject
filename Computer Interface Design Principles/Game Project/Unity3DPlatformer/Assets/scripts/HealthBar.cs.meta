@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: f3eab10d6bae4584aa4017157c156ce4
-timeCreated: 1463010451
+timeCreated: 1464127053
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - player: {instanceID: 0}
+  - healthBar: {instanceID: 0}
+  - retryMenu: {instanceID: 0}
+  - aClip: {fileID: 8300000, guid: 30b0b1deee79c544f8bb791b7a6718f7, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

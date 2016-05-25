@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuButtonController : MonoBehaviour {
 
+    //each of these functions will be called through OnClick events whenever a specific button is clicked
+    //the game will then load the appropriate Scene.  
+
     public void MenuButton()
     {
         SceneManager.LoadScene(0);
