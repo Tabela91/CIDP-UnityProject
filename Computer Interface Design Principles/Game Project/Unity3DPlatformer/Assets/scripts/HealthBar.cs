@@ -8,7 +8,7 @@ public class HealthBar : MonoBehaviour {
     public GameObject player; //player object
     public Slider healthBar; // healthbar slider
     public GameObject retryMenu; //retry menu panel]
-    private bool playedClip = false; //bool to control death sound clip
+    public bool playedClip = false; //bool to control death sound clip
 
     
 
@@ -17,16 +17,33 @@ public class HealthBar : MonoBehaviour {
         
         health = 100;
         //Uncomment below for testing health depletion and death animation trigger
-        //InvokeRepeating("ReduceHealth", 1, 1);
+        InvokeRepeating("ReduceHealth", 1, 1);
+        
         //places retrymenu panel in retryMenu game object. Disables it so that the menu does not appear at game start
         retryMenu = GameObject.Find("DeathMenu");
         retryMenu.SetActive(false);
     }
 
+    void Update()
+    {
+        StartCoroutine("ShowRetry", 3f);
+    }
+
+    IEnumerator ShowRetry(float waitTime)
+    {
+        if (playedClip)
+        {
+            //waits a set amount of seconds
+            yield return new WaitForSeconds(waitTime);
+            //shows the retry menu
+            retryMenu.SetActive(true);
+        }
+    }
+
     //method for Health Bar
     void ReduceHealth()
     {
-        health = health - 5;//health reduced by this value whenever method is invoked
+        health = health - 10;//health reduced by this value whenever method is invoked
         healthBar.value = health; //Reflects the current health value in the health bar slider
         AudioSource audio = GetComponent<AudioSource>();
         //controls death state
@@ -44,8 +61,7 @@ public class HealthBar : MonoBehaviour {
                 playedClip = true;
             }
             
-            //shows the retry menu
-            retryMenu.SetActive(true);
+            
 
         }
 

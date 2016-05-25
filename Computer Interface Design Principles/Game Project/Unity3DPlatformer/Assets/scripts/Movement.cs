@@ -11,7 +11,6 @@ public class Movement : MonoBehaviour {
     const float WALK_SPEED = .25f;
     public float speed = 10.0f;
     public VirtualJoystick joystick;
-    float forwardInput, turnInput;
 
     
 
@@ -21,17 +20,13 @@ public class Movement : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    void GetInput()
-    {
-
-        forwardInput = joystick.Vertical();
-        turnInput = joystick.Horizontal();
-    }
+   
 
 
 
         void Update()
     {
+
         
         Jump();
         Walking();
@@ -92,7 +87,9 @@ public class Movement : MonoBehaviour {
             anim.SetTrigger("Jump");
 
     }
+    
 
+    
 
     //Button Jump Trigger. Needed to be separate function to work successfully 
     public void ClickJump()

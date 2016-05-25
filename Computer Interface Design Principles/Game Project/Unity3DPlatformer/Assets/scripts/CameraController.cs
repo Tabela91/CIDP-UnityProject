@@ -43,7 +43,7 @@ public class CameraController : MonoBehaviour {
 
     Vector3 targetPos = Vector3.zero;
     Vector3 destination = Vector3.zero;
-    CharacterController charController;
+    Movement charController;
     float vOrbitInput, hOrbitInput, zoomInput, hOrbitSnapInput;
 
     void Start()
@@ -62,9 +62,9 @@ public class CameraController : MonoBehaviour {
 
         if (target != null)
         {
-            if (target.GetComponent<CharacterController>())
+            if (target.GetComponent<Movement>())
             {
-                charController = target.GetComponent<CharacterController>();
+                charController = target.GetComponent<Movement>();
             }
             else
                 Debug.LogError("The camera's target needs a character contoller.");
