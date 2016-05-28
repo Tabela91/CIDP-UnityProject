@@ -69,13 +69,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BadPickUp.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\HealthBar.cs" />
-    <Compile Include="Assets\Scripts\MenuButtonController.cs" />
-    <Compile Include="Assets\Scripts\Movement.cs" />
-    <Compile Include="Assets\Scripts\PickUp.cs" />
-    <Compile Include="Assets\Scripts\VirtualJoystick.cs" />
+    <Compile Include="Assets\scripts\BadPickUp.cs" />
+    <Compile Include="Assets\scripts\CameraController.cs" />
+    <Compile Include="Assets\scripts\HealthBar.cs" />
+    <Compile Include="Assets\scripts\MenuButtonController.cs" />
+    <Compile Include="Assets\scripts\Movement.cs" />
+    <Compile Include="Assets\scripts\PickUp.cs" />
+    <Compile Include="Assets\scripts\VirtualJoystick.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
