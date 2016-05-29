@@ -54,7 +54,6 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
         joystickImg.rectTransform.anchoredPosition = Vector3.zero;
     }
     //assign forward movement value
-    //Current Issue: inputVector X and Z are remaining zero even when joystick is moved
     public float Vertical()
     {
         if (inputVector.z != 0)

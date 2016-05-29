@@ -43,7 +43,12 @@ public class HealthBar : MonoBehaviour {
     //method for Health Bar
     void ReduceHealth()
     {
-        health = health - 10;//health reduced by this value whenever method is invoked
+        health = health - 5;//health reduced by this value whenever method is invoked
+        //this if statement will stop health value from exceeded 100 if the value ever exceeds it the cap.
+        if(health >100)
+        {
+            health = 100;
+        }
         healthBar.value = health; //Reflects the current health value in the health bar slider
         AudioSource audio = GetComponent<AudioSource>();
         //controls death state

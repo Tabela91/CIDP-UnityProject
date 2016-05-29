@@ -38,6 +38,7 @@ public class Movement : MonoBehaviour {
     {
         //controls strafing left or right with Q or E keys
         anim.SetFloat("MoveX", Input.GetAxis("MoveX")); 
+        
         //controls turning input with A and D keys or arrow keys
         anim.SetFloat("Turn", joystick.Horizontal());
         //for Joystick input
@@ -55,17 +56,11 @@ public class Movement : MonoBehaviour {
 
     void Move()
     {
-        //IF SHIFT KEY IS HELD DOWN THEREFORE WALK IS TRIGGERED
-
+        //IF SHIFT KEY IS PRESSED THEREFORE WALK IS TOGGLED ON
         if(anim.GetBool("Walk"))
-        {   //remember that input.getAxis("Horizontal") etc have been renamed to MoveZ/X
-            //Change Input.GetAxis("MoveZ") to joystick.Vertical() for Joystick Input
-            //Change Input.GetAxis("MoveX") to joystick.Horizontal() for Joystick Input
+        {   
             anim.SetFloat("MoveZ", Mathf.Clamp(joystick.Vertical(), -WALK_SPEED, WALK_SPEED));
             anim.SetFloat("MoveX", Mathf.Clamp(Input.GetAxis("MoveX"), -WALK_SPEED, WALK_SPEED));
-          // anim.SetFloat("MoveZ", Mathf.Clamp(joystick.Vertical(), -WALK_SPEED, WALK_SPEED));
-           // anim.SetFloat("MoveX", Mathf.Clamp(joystick.Horizontal(), -WALK_SPEED, WALK_SPEED));
-
         }
         
         
@@ -74,8 +69,6 @@ public class Movement : MonoBehaviour {
         {  
            //Joystick Vertical function checks for joystick position. if value is 0 then it will get the MoveZ values from the W/S and Forward/Backward buttons
             anim.SetFloat("MoveZ", joystick.Vertical());
-            // anim.SetFloat("MoveZ", Input.GetAxis("MoveZ"));
-            // anim.SetFloat("MoveX", joystick.Horizontal());
 
         }
     }
