@@ -8,6 +8,7 @@ public class PickUp : MonoBehaviour
     //when this trigger happens from something else colliding with the pickup
     void OnTriggerEnter(Collider other)
     {
+
         if (other.tag == "Player")
         {
             //adds 10 value to health and destroys pick up

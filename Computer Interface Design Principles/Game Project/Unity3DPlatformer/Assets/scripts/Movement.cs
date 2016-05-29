@@ -20,11 +20,7 @@ public class Movement : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-   
-
-
-
-        void Update()
+    void Update()
     {
 
         
@@ -80,9 +76,6 @@ public class Movement : MonoBehaviour {
             anim.SetTrigger("Jump");
 
     }
-    
-
-    
 
     //Button Jump Trigger. Needed to be separate function to work successfully 
     public void ClickJump()

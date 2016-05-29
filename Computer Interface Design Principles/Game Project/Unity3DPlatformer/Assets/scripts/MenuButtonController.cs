@@ -30,4 +30,8 @@ public class MenuButtonController : MonoBehaviour {
     {
         Application.Quit();
     }
+    public void RetryPlastic()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
