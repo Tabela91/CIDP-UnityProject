@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class CrumpledPaperControl : MonoBehaviour {
+    
+    public int pointsToAdd = 100;
 
     public AudioClip goodpickup;
     public AudioClip badpickup;
@@ -22,6 +24,7 @@ public class CrumpledPaperControl : MonoBehaviour {
         if (other.tag == "PPBot")
         {
 
+            ScoreControl.AddPoints(pointsToAdd);
             //adds 10 value to health and destroys pick up
             goodaudio.clip = goodpickup;
             HealthBar.health += 20;

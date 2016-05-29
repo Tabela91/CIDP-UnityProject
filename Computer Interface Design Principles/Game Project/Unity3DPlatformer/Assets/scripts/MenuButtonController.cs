@@ -15,6 +15,7 @@ public class MenuButtonController : MonoBehaviour {
 	public void StartButton()
     {
         SceneManager.LoadScene(1);
+        PlayerPrefs.SetInt("CurrentPlayerScore", 0);
     }
 
     public void InstButton()
@@ -33,5 +34,6 @@ public class MenuButtonController : MonoBehaviour {
     public void RetryPlastic()
     {
         SceneManager.LoadScene(1);
+        PlayerPrefs.SetInt("CurrentPlayerScore", 0);
     }
 }
